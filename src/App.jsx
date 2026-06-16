@@ -30,6 +30,11 @@ function App() {
     setTodos([...todos, newTodo]);
   };
 
+  // 自分メモ用 TodoItem->削除ボタンはidをもっていて、削除したいTODOのid以外のidの要素で配列を作り直す
+  const deleteTodo = (id) => {
+    setTodos((todos) => todos.filter((todo) => todo.id != id));
+  };
+
   return (
     <>
       <SectionTitle>Activities</SectionTitle>
@@ -38,9 +43,11 @@ function App() {
         {todos.map((todo) => (
           <TodoItem
             key={todo.id}
+            id={todo.id}
             title={todo.title}
             detail={todo.detail}
             time={todo.time}
+            onDeleteTodo={deleteTodo}
           />
         ))}
       </ul>
