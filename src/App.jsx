@@ -3,21 +3,6 @@ import SectionTitle from "./components/SectionTitle";
 import TodoInput from "./components/TodoInput";
 import TodoItem from "./components/TodoItem";
 
-// const todos = [
-//   {
-//     id: 1,
-//     title: "React",
-//     detail: "Reactの学習を行う",
-//     time: 13,
-//   },
-//   {
-//     id: 2,
-//     title: "Tailwind",
-//     detail: "Tailwindの学習を行う",
-//     time: 14,
-//   },
-// ];
-
 function App() {
   const [todos, setTodos] = useState([
     {
