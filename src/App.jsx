@@ -10,12 +10,14 @@ function App() {
       title: "React",
       detail: "Reactの学習を行う",
       time: 13,
+      completed: true,
     },
     {
       id: 2,
       title: "Tailwind",
       detail: "Tailwindの学習を行う",
       time: 14,
+      completed: false,
     },
   ]);
 
@@ -25,6 +27,7 @@ function App() {
       title: todo.title,
       detail: todo.detail,
       time: todo.time,
+      completed: false,
     };
 
     setTodos([...todos, newTodo]);
@@ -47,6 +50,7 @@ function App() {
             title={todo.title}
             detail={todo.detail}
             time={todo.time}
+            completed={todo.completed}
             onDeleteTodo={deleteTodo}
           />
         ))}
