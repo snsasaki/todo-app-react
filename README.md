@@ -8,7 +8,27 @@ reactの学習用リポジトリ
 
 - JavaScript
 - React
-- css
+- CSS
+
+## アーキテクチャ
+
+```shell
+src/
+├── components/
+│   ├── Header.tsx
+│   ├── TodoInput.tsx
+│   ├── TodoList.tsx
+│   └── TodoItem.tsx
+│
+├── layouts/
+│   └── MainLayout.tsx
+│
+├── pages/
+│   └── Home.tsx
+│
+├── App.tsx
+└── main.tsx
+```
 
 ## クイックスタート
 
