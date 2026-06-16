@@ -7,6 +7,7 @@ function TodoInput() {
       <input type="text" placeholder="COSTCOに買い物に行く" id="detail" />
       <label htmlFor="time">開始時間</label>
       <input type="text" placeholder="13" id="time" />
+      <button type="submit">追加</button>
     </>
   );
 }
