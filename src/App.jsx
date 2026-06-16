@@ -1,4 +1,5 @@
 import SectionTitle from "./components/SectionTitle";
+import TodoInput from "./components/TodoInput";
 import TodoItem from "./components/TodoItem";
 
 const todos = [
@@ -20,6 +21,7 @@ function App() {
   return (
     <>
       <SectionTitle>Activities</SectionTitle>
+      <TodoInput />
       <ul>
         {todos.map((todo) => (
           <TodoItem
