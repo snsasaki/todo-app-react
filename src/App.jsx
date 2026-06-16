@@ -2,6 +2,7 @@ import { useState } from "react";
 import SectionTitle from "./components/SectionTitle";
 import TodoInput from "./components/TodoInput";
 import TodoItem from "./components/TodoItem";
+import TodoFilter from "./components/TodoFilter";
 
 function App() {
   const [todos, setTodos] = useState([
@@ -21,6 +22,8 @@ function App() {
     },
   ]);
 
+  const [filter, setfilter] = useState("all");
+
   const addTodo = (todo) => {
     const newTodo = {
       id: todos.length + 1,
@@ -38,12 +41,19 @@ function App() {
     setTodos((todos) => todos.filter((todo) => todo.id != id));
   };
 
+  const filteredTodos = todos.filter((todo) => {
+    if (filter === "completed") return todo.completed;
+    if (filter === "active") return !todo.completed;
+    return true;
+  });
+
   return (
     <>
       <SectionTitle>Activities</SectionTitle>
       <TodoInput onAddTodo={addTodo} />
+      <TodoFilter filter={filter} onChangeFilter={setfilter} />
       <ul>
-        {todos.map((todo) => (
+        {filteredTodos.map((todo) => (
           <TodoItem
             key={todo.id}
             id={todo.id}
