@@ -45,18 +45,10 @@ function App() {
     setTodos([...todos, newTodo]);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    addTodo(todos);
-    setTodos;
-    console.log(todos);
-  };
   return (
     <>
       <SectionTitle>Activities</SectionTitle>
-      <form onSubmit={handleSubmit}>
-        <TodoInput />
-      </form>
+      <TodoInput onAddTodo={addTodo} />
       <ul>
         {todos.map((todo) => (
           <TodoItem
