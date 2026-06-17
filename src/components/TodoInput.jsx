@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Button, Stack, TextField } from "@mui/material";
 
 function TodoInput({ onAddTodo }) {
   const [title, setTitle] = useState("");
@@ -16,18 +17,21 @@ function TodoInput({ onAddTodo }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label htmlFor="title">タイトル</label>
-      <input
+    <Stack component="form" spacing={2} onSubmit={handleSubmit}>
+      <TextField
+        // ↓↓↓↓↓TextFieldのみ使えるprops↓↓↓↓
+        label="タイトル"
         type="text"
         placeholder="買い物"
         id="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         required
+        // TODO: いらないかも
+        fullWidth
       />
-      <label htmlFor="detail">詳細</label>
-      <input
+      <TextField
+        label="詳細"
         type="text"
         placeholder="COSTCOに買い物に行く"
         id="detail"
@@ -35,8 +39,8 @@ function TodoInput({ onAddTodo }) {
         onChange={(e) => setDetail(e.target.value)}
         required
       />
-      <label htmlFor="time">開始時間</label>
-      <input
+      <TextField
+        label="開始時間(何時〜)"
         type="text"
         placeholder="13"
         id="time"
@@ -44,8 +48,10 @@ function TodoInput({ onAddTodo }) {
         onChange={(e) => setTime(e.target.value)}
         required
       />
-      <button type="submit">追加</button>
-    </form>
+      <Button type="submit" variant="contained" size="medium">
+        追加
+      </Button>
+    </Stack>
   );
 }
 
