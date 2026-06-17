@@ -1,23 +1,28 @@
-// TODO: filterはcssで使うために受け取る
+import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+
 function TodoFilter({ filter, onChangeFilter }) {
   return (
-    <div>
-      <button onClick={() => onChangeFilter("all")} disabled={filter === "all"}>
+    <ToggleButtonGroup exclusive fullWidth size="large">
+      {/* exclusive: 一つだけ選択可能にできる */}
+      <ToggleButton
+        onClick={() => onChangeFilter("all")}
+        disabled={filter === "all"}
+      >
         すべて
-      </button>
-      <button
+      </ToggleButton>
+      <ToggleButton
         onClick={() => onChangeFilter("active")}
         disabled={filter === "active"}
       >
         未完了
-      </button>
-      <button
+      </ToggleButton>
+      <ToggleButton
         onClick={() => onChangeFilter("completed")}
         disabled={filter === "completed"}
       >
         完了
-      </button>
-    </div>
+      </ToggleButton>
+    </ToggleButtonGroup>
   );
 }
 
