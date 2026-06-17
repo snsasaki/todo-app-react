@@ -5,6 +5,8 @@ import TodoItem from "./components/TodoItem";
 import TodoFilter from "./components/TodoFilter";
 import TodoCount from "./components/TodoCount";
 
+import { Container, List, Paper, Stack } from "@mui/material";
+
 // 初回だけ入れるTodo
 const initTodos = [
   {
@@ -76,26 +78,30 @@ function App() {
   const activeTodoCount = todos.filter((todo) => !todo.completed).length;
 
   return (
-    <>
-      <SectionTitle>Activities</SectionTitle>
-      <TodoInput onAddTodo={addTodo} />
-      <TodoFilter filter={filter} onChangeFilter={setfilter} />
-      <TodoCount count={activeTodoCount}></TodoCount>
-      <ul>
-        {filteredTodos.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            id={todo.id}
-            title={todo.title}
-            detail={todo.detail}
-            time={todo.time}
-            completed={todo.completed}
-            onToggleTodo={toggleTodo}
-            onDeleteTodo={deleteTodo}
-          />
-        ))}
-      </ul>
-    </>
+    <Container maxWidth="sm" sx={{ py: 6 }}>
+      <Paper elevation={2} sx={{ p: 4, borderRadius: 3 }}>
+        <Stack spacing={3}>
+          <SectionTitle>Activities</SectionTitle>
+          <TodoInput onAddTodo={addTodo} />
+          <TodoFilter filter={filter} onChangeFilter={setfilter} />
+          <TodoCount count={activeTodoCount}></TodoCount>
+          <List disablePadding>
+            {filteredTodos.map((todo) => (
+              <TodoItem
+                key={todo.id}
+                id={todo.id}
+                title={todo.title}
+                detail={todo.detail}
+                time={todo.time}
+                completed={todo.completed}
+                onToggleTodo={toggleTodo}
+                onDeleteTodo={deleteTodo}
+              />
+            ))}
+          </List>
+        </Stack>
+      </Paper>
+    </Container>
   );
 }
 export default App;
