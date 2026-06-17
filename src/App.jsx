@@ -1,28 +1,44 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SectionTitle from "./components/SectionTitle";
 import TodoInput from "./components/TodoInput";
 import TodoItem from "./components/TodoItem";
 import TodoFilter from "./components/TodoFilter";
 import TodoCount from "./components/TodoCount";
 
+// 初回だけ入れるTodo
+const initTodos = [
+  {
+    id: 1,
+    title: "React",
+    detail: "Reactの学習を行う",
+    time: 13,
+    completed: true,
+  },
+  {
+    id: 2,
+    title: "Tailwind",
+    detail: "Tailwindの学習を行う",
+    time: 14,
+    completed: false,
+  },
+];
+
 function App() {
   const [filter, setfilter] = useState("all");
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      title: "React",
-      detail: "Reactの学習を行う",
-      time: 13,
-      completed: true,
-    },
-    {
-      id: 2,
-      title: "Tailwind",
-      detail: "Tailwindの学習を行う",
-      time: 14,
-      completed: false,
-    },
-  ]);
+
+  const [todos, setTodos] = useState(() => {
+    const saveTodos = localStorage.getItem("todos");
+
+    if (!saveTodos) {
+      return JSON.parse(saveTodos);
+    } else {
+      return initTodos;
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   const addTodo = (todo) => {
     const newTodo = {
