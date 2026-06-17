@@ -9,7 +9,11 @@ function TodoItem({
 }) {
   return (
     <div>
-      <input type="checkbox" checked={completed} onChange={onToggleTodo(id)} />
+      <input
+        type="checkbox"
+        checked={completed}
+        onChange={() => onToggleTodo(id)}
+      />
       <li>{title}</li>
       <li>{detail}</li>
       <li>{time}</li>
