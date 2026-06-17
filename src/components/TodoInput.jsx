@@ -24,6 +24,7 @@ function TodoInput({ onAddTodo }) {
         id="title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        required
       />
       <label htmlFor="detail">詳細</label>
       <input
@@ -32,6 +33,7 @@ function TodoInput({ onAddTodo }) {
         id="detail"
         value={detail}
         onChange={(e) => setDetail(e.target.value)}
+        required
       />
       <label htmlFor="time">開始時間</label>
       <input
@@ -40,6 +42,7 @@ function TodoInput({ onAddTodo }) {
         id="time"
         value={time}
         onChange={(e) => setTime(e.target.value)}
+        required
       />
       <button type="submit">追加</button>
     </form>
