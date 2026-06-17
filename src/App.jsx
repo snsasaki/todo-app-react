@@ -29,11 +29,11 @@ function App() {
   const [todos, setTodos] = useState(() => {
     const saveTodos = localStorage.getItem("todos");
 
-    if (!saveTodos) {
+    if (saveTodos) {
       return JSON.parse(saveTodos);
-    } else {
-      return initTodos;
     }
+
+    return initTodos;
   });
 
   useEffect(() => {
