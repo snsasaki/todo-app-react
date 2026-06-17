@@ -28,14 +28,16 @@ function App() {
 
   const [todos, setTodos] = useState(() => {
     const saveTodos = localStorage.getItem("todos");
-
+    // saveTodos（ローカルストレージ）にデータが入っていれば、JS配列（JSON）にして返す
     if (saveTodos) {
       return JSON.parse(saveTodos);
     }
-
+    // 入っていなければ用意した初期値を入れる
     return initTodos;
   });
 
+  // 依存配列todosに変更が入った時のみ、実装する処理
+  // → ローカルストレージにtodosの内容を文字列化して入れる
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
