@@ -5,6 +5,7 @@ import TodoItem from "./components/TodoItem";
 import TodoFilter from "./components/TodoFilter";
 
 function App() {
+  const [filter, setfilter] = useState("all");
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -22,8 +23,6 @@ function App() {
     },
   ]);
 
-  const [filter, setfilter] = useState("all");
-
   const addTodo = (todo) => {
     const newTodo = {
       id: todos.length + 1,
@@ -39,6 +38,14 @@ function App() {
   // 自分メモ用 TodoItem->削除ボタンはidをもっていて、削除したいTODOのid以外のidの要素で配列を作り直す
   const deleteTodo = (id) => {
     setTodos((todos) => todos.filter((todo) => todo.id != id));
+  };
+
+  const toggleTodo = (id) => {
+    setTodos((todos) =>
+      todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo,
+      ),
+    );
   };
 
   const filteredTodos = todos.filter((todo) => {
@@ -61,6 +68,7 @@ function App() {
             detail={todo.detail}
             time={todo.time}
             completed={todo.completed}
+            onToggleTodo={toggleTodo}
             onDeleteTodo={deleteTodo}
           />
         ))}
