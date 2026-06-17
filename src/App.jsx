@@ -3,6 +3,7 @@ import SectionTitle from "./components/SectionTitle";
 import TodoInput from "./components/TodoInput";
 import TodoItem from "./components/TodoItem";
 import TodoFilter from "./components/TodoFilter";
+import TodoCount from "./components/TodoCount";
 
 function App() {
   const [filter, setfilter] = useState("all");
@@ -54,11 +55,14 @@ function App() {
     return true;
   });
 
+  const activeTodoCount = todos.filter((todo) => !todo.completed).length;
+
   return (
     <>
       <SectionTitle>Activities</SectionTitle>
       <TodoInput onAddTodo={addTodo} />
       <TodoFilter filter={filter} onChangeFilter={setfilter} />
+      <TodoCount count={activeTodoCount}></TodoCount>
       <ul>
         {filteredTodos.map((todo) => (
           <TodoItem
